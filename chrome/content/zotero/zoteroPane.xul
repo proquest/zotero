@@ -63,7 +63,7 @@
 		<command id="cmd_zotero_newItemFromCurrentPage" oncommand="ZoteroPane.addItemFromPage('temporaryPDFHack', event.shiftKey ? !Zotero.Prefs.get('automaticSnapshots') : null)"/>
 	</commandset>
 	
-	<popup id="contentAreaContextMenu">
+	<!--popup id="contentAreaContextMenu">
 		<menu id="zotero-content-area-context-menu" label="Zotero">
 			<menupopup>
 				<menuitem id="zotero-context-item-from-page" class="menu-iconic"
@@ -83,7 +83,7 @@
 					oncommand="ZoteroPane.addItemFromURL(window.gContextMenu.onImage ? (window.gContextMenu.mediaURL ? window.gContextMenu.mediaURL : window.gContextMenu.imageURL) : window.gContextMenu.bgImageURL, 'artwork')"/>
 			</menupopup>
 		</menu>
-	</popup>
+	</popup-->
 	
 	<stack id="zotero-pane-stack">
 		<!-- Barrier to prevent tabbing into Zotero pane when busy -->
