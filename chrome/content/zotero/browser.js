@@ -417,7 +417,7 @@ var Zotero_Browser = new function() {
 	 */
 	function updateStatus() {
 		var tab = _getTabObject(Zotero_Browser.tabbrowser.selectedBrowser);
-		
+		/*
 		var captureIcon = tab.getCaptureIcon();
 		if(captureIcon) {
 			Zotero_Browser.statusImage.src = captureIcon;
@@ -430,6 +430,7 @@ var Zotero_Browser = new function() {
 		} else {
 			Zotero_Browser.statusImage.hidden = true;
 		}
+		*/
 		
 		// set annotation bar status
 		if(tab.page.annotations && tab.page.annotations.annotations.length) {
