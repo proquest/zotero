@@ -76,7 +76,7 @@ Zotero.HTTP = new function() {
 		}
 		
 		if(options && options.body) {
-			var bodyStart = options.body.substr(0, 1024);
+			/*var bodyStart = options.body.substr(0, 1024);
 			// Don't display sync password or session id in console
 			bodyStart = bodyStart.replace(/password=[^&]+/, 'password=********');
 			bodyStart = bodyStart.replace(/sessionid=[^&]+/, 'sessionid=********');
@@ -84,7 +84,7 @@ Zotero.HTTP = new function() {
 			Zotero.debug("HTTP "+method+" "
 				+ (options.body.length > 1024 ?
 					bodyStart + '... (' + options.body.length + ' chars)' : bodyStart)
-				+ " to " + dispURL);
+				+ " to " + dispURL);*/
 		} else {
 			Zotero.debug("HTTP " + method + " " + dispURL);
 		}

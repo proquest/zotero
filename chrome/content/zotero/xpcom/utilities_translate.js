@@ -335,6 +335,21 @@ Zotero.Utilities.Translate.prototype.doGet = function(urls, processor, done, res
 	}, responseCharset, this._translate.cookieSandbox);
 }
 
+Zotero.Utilities.Translate.prototype.promise = function(method,url,options,callback){
+	try{
+	Zotero.HTTP.promise(method, url, options).then(function(http){
+		try {
+			Zotero.debug("response");
+			var blob = new Blob([http.response], {type: "application/pdf"});
+			callback(blob);
+		}catch(e){Zotero.debug("then: "+e.message);}
+	}).done();
+
+	} catch (e) {
+		Zotero.debug("promise: "+e.message);
+	}
+}
+
 /**
  * Already documented in Zotero.HTTP
  * @ignore
