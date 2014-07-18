@@ -453,7 +453,8 @@ Zotero.Translate.Sandbox = {
 				translate._debug("WARNING: Zotero.selectItems should be called with an object, not an array");
 				var itemsObj = {};
 				for(var i in items) itemsObj[i] = items[i];
-				items = itemsObj;
+				items = transferObject(itemsObj);
+
 			}
 			
 			if(translate._selectedItems) {
