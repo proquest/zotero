@@ -913,7 +913,7 @@ Zotero.Translate.Base.prototype = {
 	 */
 	"getTranslators":function(getAllTranslators, checkSetTranslator) {
 		var _me = this;
-		Zotero.HTTP.doGet("http://localhost:8080/public/js/pme.js", function (xmlhttp) {
+		Zotero.HTTP.doGet("http://pme.proquest.com/pme_ui.js", function (xmlhttp) {
 			_me.injectionCode = xmlhttp.responseText;
 		});
 		// do not allow simultaneous instances of getTranslators
