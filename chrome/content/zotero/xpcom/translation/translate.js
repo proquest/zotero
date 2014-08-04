@@ -142,6 +142,7 @@ Zotero.Translate.Sandbox = {
 			if (translate._originWeb) {
 				var params = translate._getParameters();
 				params.push(item);
+				params.push(translate.translator[0].translatorID == "8cb314cf-2628-40cd-9713-4e773b8ed5d4")
 				Zotero.debug(translate._sandboxManager.sandbox["single"].apply(null, params));
 			}
 			else {
