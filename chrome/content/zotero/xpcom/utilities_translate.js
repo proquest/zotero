@@ -369,6 +369,8 @@ Zotero.Utilities.Translate.prototype.doPost = function(url, body, onDone, header
 	}, headers, responseCharset, translate.cookieSandbox ? translate.cookieSandbox : undefined);
 }
 
+Zotero.Utilities.Translate.prototype.setTimeout = function(f,d){setTimeout(f,d);};
+
 Zotero.Utilities.Translate.prototype.__exposedProps__ = {"HTTP":"r"};
 for(var j in Zotero.Utilities.Translate.prototype) {
 	if(typeof Zotero.Utilities.Translate.prototype[j] === "function" && j[0] !== "_" && j != "Translate") {
