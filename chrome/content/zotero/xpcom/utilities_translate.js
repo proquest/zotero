@@ -340,7 +340,7 @@ Zotero.Utilities.Translate.prototype.promise = function(method,url,options,callb
 	Zotero.HTTP.promise(method, url, options).then(function(http){
 		try {
 			Zotero.debug("response");
-			var blob = new Blob([http.response], {type: "application/pdf"});
+			var blob = new Blob([http.response], {type: (options.headers["Content-Type"] ? options.headers["Content-Type"] : "application/pdf")});
 			callback(blob);
 		}catch(e){Zotero.debug("then: "+e.message);}
 	}).done();

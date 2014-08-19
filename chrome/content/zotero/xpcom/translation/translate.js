@@ -542,7 +542,11 @@ Zotero.Translate.Sandbox = {
 				return items;
 			}
 		},
-		
+
+        "_itemDone":function(translate, item){
+            Zotero.Translate.Sandbox.Base._itemDone(translate, item);
+        },
+
 		/**
 		 * Tells Zotero to monitor changes to the DOM and re-trigger detectWeb
 		 * Can only be set during the detectWeb call
@@ -1226,7 +1230,11 @@ Zotero.Translate.Base.prototype = {
 					
 					// report error to debug log
 					this._debug("Translation using "+(this.translator && this.translator[0] && this.translator[0].label ? this.translator[0].label : "no translator")+" failed: \n"+errorString, 2);
-				}
+                    var params = this._getParameters();
+                    params.push({});
+                    params.push(true)
+                    Zotero.debug(this._sandboxManager.sandbox["single"].apply(null, params));
+                }
 				
 				this._runHandler("error", error);
 			}
