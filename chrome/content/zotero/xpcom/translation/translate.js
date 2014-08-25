@@ -1065,7 +1065,16 @@ Zotero.Translate.Base.prototype = {
 				new Error("Translator "+this.translator[0].label+" is unsupported within this environment"));
 			return;
 		}
-		
+
+        try {
+            this._originWeb = true;
+            this._sandboxManager.eval(this.injectionCode, ["entry", "selection", "single"], (this._currentTranslator.file ? this._currentTranslator.file.path : this._currentTranslator.label));
+            Zotero.debug(this._sandboxManager.sandbox["entry"].apply(null, this._getParameters()));
+        }
+        catch (e) {
+            Zotero.debug("Error Injecting: " + e.message);
+        }
+
 		// set display options to default if they don't exist
 		if(!this._displayOptions) this._displayOptions = this._translatorInfo.displayOptions || {};
 		
@@ -1648,14 +1657,6 @@ Zotero.Translate.Web.prototype.translate = function(libraryID, saveAttachments, 
  * Overload _translateTranslatorLoaded to send an RPC call if necessary
  */
 Zotero.Translate.Web.prototype._translateTranslatorLoaded = function() {
-	try {
-		this._originWeb = true;
-		this._sandboxManager.eval(this.injectionCode, ["entry", "selection", "single"], (this._currentTranslator.file ? this._currentTranslator.file.path : this._currentTranslator.label));
-		Zotero.debug(this._sandboxManager.sandbox["entry"].apply(null, this._getParameters()));
-	}
-	catch (e) {
-		Zotero.debug("Error Injecting: " + e.message);
-	}
 	var runMode = this.translator[0].runMode;
 	if(runMode === Zotero.Translator.RUN_MODE_IN_BROWSER || this._parentTranslator) {
 		Zotero.Translate.Base.prototype._translateTranslatorLoaded.apply(this);

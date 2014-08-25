@@ -339,14 +339,14 @@ Zotero.Utilities.Translate.prototype.promise = function(method,url,options,callb
 	try{
 	Zotero.HTTP.promise(method, url, options).then(function(http){
 		try {
-			Zotero.debug("response");
-			var blob = new Blob([http.response], {type: (options.headers["Content-Type"] ? options.headers["Content-Type"] : "application/pdf")});
+            var contentType = options && options.headers && options.headers["Content-Type"] ? options.headers["Content-Type"] : "application/pdf";
+			var blob = new Blob([http.response], {type: contentType});
 			callback(blob);
-		}catch(e){Zotero.debug("then: "+e.message);}
+		}catch(e){Zotero.debug("error in promise.then: "+e.message);}
 	}).done();
 
 	} catch (e) {
-		Zotero.debug("promise: "+e.message);
+		Zotero.debug("error in promise: "+e.message);
 	}
 }
 
